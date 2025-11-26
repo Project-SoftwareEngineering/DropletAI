@@ -7,6 +7,14 @@ Our platform converts specialised domain requirements into efficient small-model
 
 **NOTE: THIS PROJECT REQUIRES HIGH COMPUTE & CUDA CORES, WE PREFER RUNNING THIS ON STRONG GPU**
 
+![WhatsApp Image 2025-11-25 at 20 34 40](https://github.com/user-attachments/assets/37cd954f-c773-48ba-867a-386bacc9228e)
+
+![WhatsApp Image 2025-11-25 at 20 34 41](https://github.com/user-attachments/assets/5e27a080-0193-4700-8af4-c4145eca4275)
+
+![WhatsApp Image 2025-11-26 at 00 18 12](https://github.com/user-attachments/assets/774082d4-b3be-421c-9aef-f00e26a30015)
+
+![WhatsApp Image 2025-11-26 at 12 07 51](https://github.com/user-attachments/assets/f4bd0869-0b83-49f5-8c93-0058e4154d83)
+
 Prerequisites
 
 - MongoDB Atlas: create a free Atlas cluster and note the connection string (URI). Use that as `MONGODB_URI` when running the backend.
@@ -46,6 +54,10 @@ Notes
 - Download models from Hugging Face and ensure the backend `MODEL_PATH` points to the downloaded files. Large model files are not included here.
 - Use MongoDB Atlas as the database for ease of setup — supply the Atlas connection string in `MONGODB_URI`.
 - Do not add `.env` or other secret-containing files to the repository. Keep credentials in your environment or a secure secrets manager.
+
+![WhatsApp Image 2025-11-25 at 20 35 15](https://github.com/user-attachments/assets/d48ad4ae-a885-4941-aec2-b49ba06e79f4)
+
+![WhatsApp Image 2025-11-25 at 20 35 15 (1)](https://github.com/user-attachments/assets/efb9c9ee-17e1-4d59-841f-8db6c0a829af)
 
 **Tech Stack**
 
