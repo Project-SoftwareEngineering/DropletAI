@@ -1,0 +1,4 @@
+prometheus/data/
+grafana/data/
+jenkins/data/
+*.log

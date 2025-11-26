@@ -1,0 +1,24 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /health                   --> main.setupRouter.func1 (5 handlers)
+[GIN-debug] GET    /metrics                  --> main.setupRouter.WrapH.func3 (5 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> github.com/droplet/backend/handlers.(*AuthHandler).Signup-fm (5 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> github.com/droplet/backend/handlers.(*AuthHandler).Login-fm (5 handlers)
+[GIN-debug] POST   /api/v1/auth/logout       --> github.com/droplet/backend/handlers.(*AuthHandler).Logout-fm (5 handlers)
+[GIN-debug] POST   /api/v1/playground/chat   --> github.com/droplet/backend/handlers.(*PlaygroundHandler).Chat-fm (5 handlers)
+[GIN-debug] GET    /api/v1/profile           --> github.com/droplet/backend/handlers.(*AuthHandler).GetProfile-fm (6 handlers)
+[GIN-debug] POST   /api/v1/jobs              --> github.com/droplet/backend/handlers.(*JobHandler).CreateJob-fm (6 handlers)
+[GIN-debug] GET    /api/v1/jobs              --> github.com/droplet/backend/handlers.(*JobHandler).ListJobs-fm (6 handlers)
+[GIN-debug] GET    /api/v1/jobs/:id          --> github.com/droplet/backend/handlers.(*JobHandler).GetJob-fm (6 handlers)
+[GIN-debug] DELETE /api/v1/jobs/:id          --> github.com/droplet/backend/handlers.(*JobHandler).CancelJob-fm (6 handlers)
+[GIN-debug] GET    /api/v1/models            --> github.com/droplet/backend/handlers.(*JobHandler).ListModels-fm (6 handlers)
+[GIN-debug] GET    /api/v1/base-models       --> github.com/droplet/backend/handlers.(*JobHandler).ListBaseModels-fm (6 handlers)
+2025/11/25 23:20:43 🚀 Server started on port 8080
+[GIN] 2025/11/25 - 23:20:52 | 200 |     293.084µs |             ::1 | GET      "/health"
+[GIN] 2025/11/25 - 23:22:25 | 400 |       179.5µs |             ::1 | POST     "/api/v1/playground/chat"
+[GIN] 2025/11/25 - 23:23:11 | 500 | 28.080802417s |             ::1 | POST     "/api/v1/playground/chat"
+signal: killed

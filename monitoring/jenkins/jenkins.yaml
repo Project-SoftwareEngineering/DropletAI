@@ -1,0 +1,2 @@
+jenkins.install.runSetupWizard=false
+jenkins.install.installState=INITIAL_SETUP_COMPLETED

@@ -1,0 +1,39 @@
+groups:
+  - name: droplet_alerts
+    interval: 30s
+    rules:
+      - alert: HighAPIErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High API error rate detected"
+          description: "API error rate is {{ $value }} errors/second"
+
+      - alert: TrainingJobStuck
+        expr: training_jobs_active > 0 AND training_job_duration_seconds > 7200
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Training job running too long"
+          description: "Job has been running for {{ $value }} seconds"
+
+      - alert: LowDiskSpace
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) < 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low disk space"
+          description: "Only {{ $value | humanizePercentage }} disk space remaining"
+
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) > 0.9
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value | humanizePercentage }}"

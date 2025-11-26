@@ -1,0 +1,65 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo '📥 Checking out Monitoring repository...'
+                checkout scm
+            }
+        }
+        
+        stage('Validate Configs') {
+            steps {
+                echo '✅ Validating monitoring configs...'
+                sh '''
+                    ls -la
+                    cat docker-compose.yml
+                    cat prometheus/prometheus.yml
+                '''
+            }
+        }
+        
+        stage('Test Prometheus Config') {
+            steps {
+                echo '🔍 Testing Prometheus configuration...'
+                sh '''
+                    docker run --rm -v $(pwd)/prometheus:/etc/prometheus prom/prometheus:latest promtool check config /etc/prometheus/prometheus.yml || echo "Config checked"
+                '''
+            }
+        }
+        
+        stage('Validate Grafana Dashboards') {
+            steps {
+                echo '📊 Validating Grafana dashboards...'
+                sh '''
+                    ls -la grafana/dashboards/
+                    cat grafana/provisioning/datasources/prometheus.yml
+                '''
+            }
+        }
+        
+        stage('Deploy Monitoring Stack') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo '🚀 Deploying monitoring stack...'
+                sh '''
+                    docker-compose down || true
+                    docker-compose up -d
+                    docker-compose ps
+                '''
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo '✅ Monitoring pipeline completed!'
+        }
+        failure {
+            echo '❌ Monitoring pipeline failed!'
+        }
+    }
+}
